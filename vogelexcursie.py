@@ -3,8 +3,6 @@ import datacollector
 import activitydetector
 import notifier
 
-# TODO: write readme
-
 def main():
     dc = datacollector.DataCollector()
     df_current = dc.collect_current_excursions()
