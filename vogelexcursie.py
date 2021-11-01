@@ -26,15 +26,16 @@ def validate_df(df):
     return df
 
 def engineer_features(df):
-    base_url = 'https://www.vogelbescherming.nl'
-
     df_new = df[[]].copy()
     df_new['ID'] = df['properties.customID']
     df_new['Longitude'] = df['geometry.coordinates'].apply(lambda x: x[0])
     df_new['Latitude'] = df['geometry.coordinates'].apply(lambda x: x[1])
     
     df_new['Titel'] = df['properties.popupContent'].str.extract('^<strong>(.+)</strong>')
+    # TODO: parse Datum as date
     df_new['Datum'] = df['properties.popupContent'].str.extract('Excursie<br />(.+)<br />')
+    
+    base_url = 'https://www.vogelbescherming.nl'
     df_new['URL'] = base_url + df['properties.popupContent'].str.extract("<a href='(.+)'>")
     return df_new
 
@@ -85,6 +86,9 @@ def main():
     # find new activities
     df_last = pd.read_csv(file_loc).pipe(validate_df)
     df_new_activities = select_new_activities(df_last, df_current)
+
+    print(df_current)
+    print(df_new_activities)
 
     # email new activities
     if not df_new_activities.empty:
