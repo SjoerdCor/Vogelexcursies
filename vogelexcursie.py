@@ -12,8 +12,9 @@ def main():
     ad = activitydetector.ActivityDetector()
     df_new = ad.find_new_activities(df_current)
 
-    nf = notifier.Notifer()
-    nf.notify()
+    nf = notifier.Notifier()
+    nf.notify(df_new)
 
     dc.save_current_excursions(df_current)
+
 main()

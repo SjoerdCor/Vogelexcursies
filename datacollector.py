@@ -68,8 +68,6 @@ class DataCollector:
         """
         Writes dataframe to config for future comparison
         """
-
-
         with open("config.yaml", "r") as stream:
             try:
                 config = (yaml.safe_load(stream))

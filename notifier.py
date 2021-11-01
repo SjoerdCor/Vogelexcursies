@@ -17,7 +17,7 @@ class Notifier:
 
     def create_message(self, df: pd.DataFrame):
         """
-        Create
+        Create subject and message to notify user with
 
         Parameters
         ----------

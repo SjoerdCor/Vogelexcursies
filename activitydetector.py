@@ -4,7 +4,7 @@ import yaml
 class ActivityDetector:
 
     def find_known_excursions(self) -> pd.DataFrame:
-        """ Find the known excursions"""
+        """ Load the known excursions from disk"""
         with open("config.yaml", "r") as stream:
             try:
                 config = (yaml.safe_load(stream))
