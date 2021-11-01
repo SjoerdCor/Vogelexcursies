@@ -1,0 +1,3 @@
+location-known-excursions: 'Data\vogelexcursies.csv'
+email-from: 'emailfrom@provider.com'
+email-to: 'emailto@provider.com'
